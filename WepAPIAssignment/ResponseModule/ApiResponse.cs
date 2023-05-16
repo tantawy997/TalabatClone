@@ -11,7 +11,7 @@ namespace WepAPIAssignment.ResponseModule
         {
             StatusCode = _statusCode;
 
-           Message = GetDefualtMessageForStatusCode(StatusCode);
+           Message = _message ?? GetDefualtMessageForStatusCode(StatusCode);
         }
 
 

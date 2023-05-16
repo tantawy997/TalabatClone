@@ -1,6 +1,7 @@
 ﻿using Core.entites;
 using Core.entites.OrderAggragate;
 using Core.Interfaces;
+using Core.Specifiactions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,19 +60,24 @@ namespace Infrastructure.Data
 
         }
 
-        public Task<Order> CreateOrderAsync(int id, string buyerEmail)
+        public async Task<Order> CreateOrderByIdAsync(int id, string buyerEmail)
         {
-            throw new NotImplementedException();
+            OrderWithItemsSpecefactions orderSpec = new OrderWithItemsSpecefactions(id, buyerEmail);
+
+            return await unitOfWork.Repositary<Order>().GetEntitytWithSpecifiaction(orderSpec);
+
         }
 
-        public Task<IReadOnlyList<DelivaryMethod>> GetDelivaryMethodAsync()
+        public async Task<IReadOnlyList<DelivaryMethod>> GetDelivaryMethodAsync()
         {
-            throw new NotImplementedException();
+            return await unitOfWork.Repositary<DelivaryMethod>().GetAllAsync();
         }
 
-        public Task<IReadOnlyList<Order>> GetOrdersForUserAsync(string buyerEmail)
+        public async Task<IReadOnlyList<Order>> GetOrdersForUserAsync(string buyerEmail)
         {
-            throw new NotImplementedException();
+            OrderWithItemsSpecefactions orderSpec = new OrderWithItemsSpecefactions(buyerEmail);
+            return await unitOfWork.Repositary<Order>().ListUnderSpecifications(orderSpec);
+
         }
     }
 }

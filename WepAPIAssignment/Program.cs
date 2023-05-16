@@ -42,6 +42,7 @@ namespace WepAPIAssignment
             builder.Services.AddIdentityConfigrution(builder.Configuration);
             builder.Services.AddSwaggerService();
             builder.Services.AddScoped<ITokenService, TokenService>();
+            builder.Services.AddScoped<IOrderService, OrderService>();
 
             //builder.Services.AddIdentityCore<AppUser>();
 
