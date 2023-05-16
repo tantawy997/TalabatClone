@@ -8,9 +8,8 @@ using WepAPIAssignment.ResponseModule;
 
 namespace WepAPIAssignment.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class BasketController : ControllerBase
+
+    public class BasketController : BaseController
     {
         private readonly IBasketRepo basketRepo;
         private readonly IMapper mapper;

@@ -33,7 +33,7 @@ namespace Infrastructure.Data
         public async Task<CustomerBasket> UpdateBasketAsync(CustomerBasket basket)
         {
             var data = await redis.StringSetAsync(basket.id,
-                JsonSerializer.Serialize<CustomerBasket>(basket), TimeSpan.FromDays(30));
+                JsonSerializer.Serialize<CustomerBasket>(basket), TimeSpan.FromMinutes(10));
 
             if (!data)
                 return null;

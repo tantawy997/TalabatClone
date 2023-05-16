@@ -11,9 +11,8 @@ using WepAPIAssignment.ResponseModule;
 
 namespace WepAPIAssignment.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ProductsController : ControllerBase
+
+    public class ProductsController : BaseController
     {
         private readonly IGenricRepo<Product> productRepo;
         private readonly IGenricRepo<ProductBrand> brandRepo;

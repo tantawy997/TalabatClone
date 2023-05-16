@@ -11,9 +11,8 @@ using WepAPIAssignment.ResponseModule;
 namespace WepAPIAssignment.Controllers
 {
     [Authorize]
-    [Route("api/[controller]")]
-    [ApiController]
-    public class OrderController : ControllerBase
+
+    public class OrderController : BaseController
     {
         private readonly IOrderService orderService;
         private readonly IMapper mapper;

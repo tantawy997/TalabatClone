@@ -12,9 +12,8 @@ using WepAPIAssignment.ResponseModule;
 
 namespace WepAPIAssignment.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AccountController : ControllerBase
+
+    public class AccountController : BaseController
     {
         private readonly UserManager<AppUser> userManager;
         private readonly SignInManager<AppUser> signInManager;
