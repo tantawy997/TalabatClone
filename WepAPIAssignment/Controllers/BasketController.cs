@@ -40,7 +40,7 @@ namespace WepAPIAssignment.Controllers
         [HttpDelete]
 
         public async Task DeleteBasket(string id)
-        {
+         {
             await basketRepo.DeleteBasketAsync(id);
         }
     }
