@@ -38,6 +38,7 @@ namespace Core.entites.OrderAggragate
 
         public OrderStatus orderStatus { get; set; } = OrderStatus.Pinding;
 
+        public string PaymentIntentId { get; set; }
 
         public decimal GetTotal()
         {

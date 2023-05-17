@@ -14,11 +14,13 @@ namespace Infrastructure.Data
     {
         private readonly IBasketRepo basketRepo;
         private readonly IUnitOfWork unitOfWork;
+        private readonly IPaymentService paymentService;
 
-        public OrderService(IBasketRepo _basketRepo, IUnitOfWork _unitOfWork)
+        public OrderService(IBasketRepo _basketRepo, IUnitOfWork _unitOfWork, IPaymentService _paymentService)
         {
             basketRepo = _basketRepo;
             unitOfWork = _unitOfWork;
+            paymentService = _paymentService;
         }
         public async Task<Order> CreateOrderAsync(string buyerEmail, int delivaryMethodId, 
             string BasketId, ShippingAddress shippingAddress)
@@ -42,6 +44,14 @@ namespace Infrastructure.Data
 
             //calcute subtotal 
             var subtotal = OrderItems.Sum(item=> item.Price * item.Qunatity);
+
+            var spec = new OrderWithPaymentSpecefactions(basket.PaymentIntentId);
+            var ExistingOrder = await unitOfWork.Repositary<Order>().GetEntitytWithSpecifiaction(spec);
+            if(ExistingOrder != null)
+            {
+                unitOfWork.Repositary<Order>().Delete(ExistingOrder);
+                await paymentService.CreateOrUpdatePaymentIntent(BasketId);
+            }
 
             var order = new Order(buyerEmail,shippingAddress,delivaryMethod,OrderItems,
                 subtotal);

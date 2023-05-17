@@ -18,6 +18,8 @@ namespace WepAPIAssignment.Dtos
 
         public IReadOnlyList<OrderItemDTO> orderItems { get; set; }
 
+        public string PaymentIntentId { get; set; }
+
         public decimal subTotal { get; set; }
 
         public string orderStatus { get; set; }

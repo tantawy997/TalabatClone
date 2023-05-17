@@ -10,11 +10,15 @@ namespace WepAPIAssignment.Dtos
         //}
         public string Id { get; set; }
 
-        public int? DelivaryMethod { get; set; }
+        public int? DelivaryMethodId { get; set; }
 
         public decimal ShippingPrice { get; set; }
 
         public List<BasketItemsDTO> BasketItems { get; set; }
+
+        public string PaymentIntentId { get; set; }
+
+        public string ClientSecret { get; set; }
 
     }
 }

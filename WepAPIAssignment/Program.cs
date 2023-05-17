@@ -43,7 +43,7 @@ namespace WepAPIAssignment
             builder.Services.AddSwaggerService();
             builder.Services.AddScoped<ITokenService, TokenService>();
             builder.Services.AddScoped<IOrderService, OrderService>();
-            //builder.Services.AddScoped<IBasketRepo, BasketRepo>();
+            builder.Services.AddScoped<IPaymentService, PaymentService>();
             //builder.Services.AddIdentityCore<AppUser>();
 
             builder.Services.AddSingleton<IConnectionMultiplexer>(config =>
