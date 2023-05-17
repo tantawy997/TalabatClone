@@ -69,7 +69,9 @@ namespace Infrastructure.Data
                 intent = await service.UpdateAsync(basket.PaymentIntentId,options);
                 basket.ClientSecret = intent.ClientSecret;
                 basket.PaymentIntentId = intent.Id;
+
             }
+
             await basketRepo.UpdateBasketAsync(basket);
             return basket;
         }
@@ -78,7 +80,7 @@ namespace Infrastructure.Data
         {
             var spec = new OrderWithPaymentSpecefactions(PaymentIntentId);
 
-            var order =await unitOfWork.Repositary<Order>().GetEntitytWithSpecifiaction(spec);
+            var order = await unitOfWork.Repositary<Order>().GetEntitytWithSpecifiaction(spec);
             if (order is null)
                 return null;
 
@@ -91,9 +93,21 @@ namespace Infrastructure.Data
             return order;
         }
 
-        public Task<Order> UpdatePaymentSucceded(string PaymentIntentId)
+        public async Task<Order> UpdatePaymentSucceded(string PaymentIntentId)
         {
-            throw new NotImplementedException();
+            var spec = new OrderWithPaymentSpecefactions(PaymentIntentId);
+
+            var order = await unitOfWork.Repositary<Order>().GetEntitytWithSpecifiaction(spec);
+            if (order is null)
+                return null;
+
+            order.orderStatus = OrderStatus.PaymentReceived;
+
+            unitOfWork.Repositary<Order>().Update(order);
+
+            await unitOfWork.Complete();
+
+            return order;
         }
     }
 }
