@@ -6,15 +6,16 @@
 
         public string ProductName { get; set; }
 
-        public int Price { get; set; }
+        public decimal Price { get; set; }
 
-        public int quntity { get; set; }
+        public int Quntity { get; set; }
 
         public string PictureUrl { get; set; }
 
-        public string brand { get; set; }
+        public string Brand { get; set; }
 
-        public string type { get; set; }
+        public string Type { get; set; }
+
 
     }
 }

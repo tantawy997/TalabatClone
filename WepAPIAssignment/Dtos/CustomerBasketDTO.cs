@@ -8,7 +8,7 @@ namespace WepAPIAssignment.Dtos
         //{
         //    id = _id;
         //}
-        public string id { get; set; }
+        public string Id { get; set; }
 
         public int? DelivaryMethod { get; set; }
 

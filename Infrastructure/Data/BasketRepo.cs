@@ -32,14 +32,14 @@ namespace Infrastructure.Data
 
         public async Task<CustomerBasket> UpdateBasketAsync(CustomerBasket basket)
         {
-            var data = await redis.StringSetAsync(basket.id,
+            var data = await redis.StringSetAsync(basket.Id,
                 JsonSerializer.Serialize<CustomerBasket>(basket), TimeSpan.FromMinutes(10));
 
             if (!data)
                 return null;
 
             
-            return await GetBasketAsync(basket.id);
+            return await GetBasketAsync(basket.Id);
           
         }
     }

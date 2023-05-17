@@ -33,7 +33,7 @@ namespace Infrastructure.Data
 
                 var itemOrdered = new ProductItemOrdered(produtItem.Id,produtItem.Name,
                     produtItem.PictureUrl);
-                var OrderItem = new OrderItem(itemOrdered, produtItem.Price, item.quntity);
+                var OrderItem = new OrderItem(itemOrdered, produtItem.Price, item.Quntity);
 
                 OrderItems.Add(OrderItem);
             }

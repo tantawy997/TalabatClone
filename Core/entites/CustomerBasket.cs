@@ -2,12 +2,12 @@
 {
     public class CustomerBasket
     {
-        public CustomerBasket(string Id)
+        public CustomerBasket(string id)
         {
-            id = Id;
+            Id = id;
         }
 
-        public string id { get; set; }
+        public string Id { get; set; }
 
         public int? DelivaryMethod { get; set; }
 
