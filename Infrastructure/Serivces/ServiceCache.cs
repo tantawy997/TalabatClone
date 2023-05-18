@@ -17,7 +17,7 @@ namespace Infrastructure.Serivces
         {
             redis = Redis.GetDatabase();
         }
-        public async Task CacheResponseAsync(string cacheKey, string response, TimeSpan timeToLive)
+        public async Task CacheResponseAsync(string cacheKey, object response, TimeSpan timeToLive)
         {
             if (response is null)
                 return;

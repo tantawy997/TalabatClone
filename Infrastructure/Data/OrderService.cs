@@ -54,7 +54,7 @@ namespace Infrastructure.Data
             }
 
             var order = new Order(buyerEmail,shippingAddress,delivaryMethod,OrderItems,
-                subtotal);
+                subtotal, basket.PaymentIntentId);
 
             await unitOfWork.Repositary<Order>().AddEntityAsync(order);
             var res= await unitOfWork.Complete();
@@ -63,7 +63,7 @@ namespace Infrastructure.Data
                 return null;
 
 
-            await basketRepo.DeleteBasketAsync(BasketId);
+            //await basketRepo.DeleteBasketAsync(BasketId);
 
             return order;
 

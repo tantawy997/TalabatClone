@@ -45,6 +45,12 @@ namespace WepAPIAssignment
             builder.Services.AddScoped<IOrderService, OrderService>();
             builder.Services.AddScoped<IPaymentService, PaymentService>();
             //builder.Services.AddIdentityCore<AppUser>();
+            builder.Services.AddScoped<IResponseCache, ServiceCache>();
+            builder.Services.AddCors(option =>
+            {
+                option.AddPolicy("CorsPolicy", policy =>
+                policy.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin().SetIsOriginAllowed(origin => true));
+            });
 
             builder.Services.AddSingleton<IConnectionMultiplexer>(config =>
             {
@@ -88,7 +94,7 @@ namespace WepAPIAssignment
             }
             //app.UseMiddleware<MiddleWirreException>();
             //app.UseMiddleware<ExpectionMiddlwirres>();
-
+            app.UseCors("CorsPolicy");
             app.UseStaticFiles();
             app.UseHttpsRedirection();
 

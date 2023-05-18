@@ -16,9 +16,9 @@ namespace WepAPIAssignment.Dtos
 
         public List<BasketItemsDTO> BasketItems { get; set; }
 
-        public string PaymentIntentId { get; set; }
+        public string? PaymentIntentId { get; set; }
 
-        public string ClientSecret { get; set; }
+        public string? ClientSecret { get; set; }
 
     }
 }

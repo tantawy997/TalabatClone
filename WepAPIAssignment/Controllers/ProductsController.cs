@@ -28,8 +28,8 @@ namespace WepAPIAssignment.Controllers
             mapper = _mapper;
         }
 
+        [Cached(100)]
         [HttpGet("GetProducts")]
-
         public async Task<ActionResult<Pagination<ProductDTO>>> GetProductsAsync([FromQuery] SpecifiactionsParams specifiactionsParams)
         {
             var spec = new ProductWithBrandAndTypeSpecifiactions(specifiactionsParams);
@@ -45,6 +45,8 @@ namespace WepAPIAssignment.Controllers
         }
 
         [HttpGet("{id}")]
+        [Cached(100)]
+
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse),StatusCodes.Status404NotFound)]
 
@@ -63,6 +65,7 @@ namespace WepAPIAssignment.Controllers
 
 
         [HttpGet("Brands")]
+        [Cached(100)]
 
         public async Task<ActionResult<ProductBrand>> GetProductBrands()
         {
@@ -70,6 +73,8 @@ namespace WepAPIAssignment.Controllers
         }
 
         [HttpGet("Types")]
+        [Cached(100)]
+
         public async Task<ActionResult<ProductType>> GetProductTypes()
         {
             var types = await productRepo.GetAllAsync();

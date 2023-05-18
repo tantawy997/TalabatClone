@@ -8,7 +8,7 @@ namespace Core.Interfaces
 {
     public interface IResponseCache
     {
-        Task CacheResponseAsync(string cacheKey, string response, TimeSpan timeToLive);
+        Task CacheResponseAsync(string cacheKey, object response, TimeSpan timeToLive);
 
         Task<string> GetCacheResponse(string cacheKey);
     }

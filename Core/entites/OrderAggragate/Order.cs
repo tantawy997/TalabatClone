@@ -13,13 +13,15 @@ namespace Core.entites.OrderAggragate
 
         }
         public Order(string _buyerEmail, ShippingAddress _shippingAddress, 
-            DelivaryMethod _delivaryMethod, IReadOnlyList<OrderItem> _orderItems, decimal _subTotal)
+            DelivaryMethod _delivaryMethod, IReadOnlyList<OrderItem> _orderItems, decimal _subTotal,
+            string _PaymentIntentId)
         {
             BuyerEmail = _buyerEmail;
             shippingAddress = _shippingAddress;
             delivaryMethod = _delivaryMethod;
             orderItems = _orderItems;
             subTotal = _subTotal;
+            PaymentIntentId = _PaymentIntentId;
         }
 
         public int id { get; set; }
@@ -38,7 +40,7 @@ namespace Core.entites.OrderAggragate
 
         public OrderStatus orderStatus { get; set; } = OrderStatus.Pinding;
 
-        public string PaymentIntentId { get; set; }
+        public string? PaymentIntentId { get; set; }
 
         public decimal GetTotal()
         {

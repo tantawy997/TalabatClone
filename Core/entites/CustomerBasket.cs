@@ -15,9 +15,9 @@
 
         public List<BasketItems> BasketItems { get;set; } = new List<BasketItems>();
 
-        public string PaymentIntentId { get; set; }
+        public string? PaymentIntentId { get; set; }
 
-        public string ClientSecret { get; set; }
+        public string? ClientSecret { get; set; }
 
     }
 }
